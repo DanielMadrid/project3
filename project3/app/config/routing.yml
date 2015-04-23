@@ -2,3 +2,6 @@ dani_blog:
     resource: "@DaniBlogBundle/Resources/config/routing.yml"
     prefix:   /
 
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
