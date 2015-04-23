@@ -1,0 +1,24 @@
+{% extends 'DaniBlogBundle::base.html.twig' %}
+
+{% block stylesheets %}
+{% stylesheets output='css/main.css' filter='cssrewrite' debug=false
+'bundles/DaniBlog/lib/bootstrap/css/bootstrap.min.css'
+'bundles/DaniBlog/css/styles.css' -%}
+    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block body -%}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% javascripts output='js/main.js' debug=false
+'@DaniBlogBundle/Resources/public/js/jquery.js'
+'@DaniBlogBundle/Resources/public/lib/bootstrap/js/bootstrap.min.js'
+'@DaniBlogBundle/Resources/public/js/scripts.js' -%}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}

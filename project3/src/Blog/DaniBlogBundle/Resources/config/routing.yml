@@ -1,5 +1,5 @@
 DaniBlogBundle_homepage:
-    path:     /{name}
+    path:     /
     defaults: { _controller: DaniBlogBundle:Page:index }
     requirements:
         _method:  GET
