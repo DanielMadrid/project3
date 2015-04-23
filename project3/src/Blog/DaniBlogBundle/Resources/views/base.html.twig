@@ -23,11 +23,15 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% include 'DaniBlogBundle:Template:navigation.html.twig' %}
+        
         {% if title is defined %}
             {% include 'DaniBlogBundle:Template:head.html.twig' %}
         {% endif %}
         
-        {% block body %}{% endblock %}
+        <div class='row'>
+            {% block body %}{% endblock %}
+        </div>
         
         {% block javascripts %}
             
