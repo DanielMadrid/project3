@@ -4,5 +4,28 @@
 
 {% block body %}
 <div class='col-sm-4'></div>
-<h3 class='col-sm-4'>Hello World!</h3>
+<div class='col-sm-4'>
+    {% for blog in blogs %}
+        <article class="blog">
+            <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
+            <header>
+                <h2><a href="{{ path('DaniBlogBundle_blog_show', { 'id': blog.id }) }}">{{ blog.title }}</a></h2>
+            </header>
+
+            <img src="{{ asset(['images/', blog.image]|join) }}" />
+            <div class="snippet">
+                <p>{{ blog.blog(500) }}</p>
+                <p class="continue"><a href="{{ path('DaniBlogBundle_blog_show', { 'id': blog.id }) }}">Continue reading...</a></p>
+            </div>
+
+            <footer class="meta">
+                <p>Comments: <a href="{{ path('DaniBlogBundle_blog_show', { 'id': blog.id }) }}#comments">{{ blog.comments|length }}</a></p>
+                <p>Posted by <span class="highlight">{{ blog.author }}</span> at {{ blog.created|date('h:iA') }}</p>
+                <p>Tags: <span class="highlight">{{ blog.tags }}</span></p>
+            </footer>
+        </article>
+    {% else %}
+        <h3>There are no blog entries for symblog</h3>
+    {% endfor %}
+    </div>
 {% endblock %}

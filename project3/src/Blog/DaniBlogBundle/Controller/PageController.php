@@ -18,11 +18,19 @@ class PageController extends Controller
     	$title = "Home";
     	$text = "Welcome to our Blog";
 
+
+        $em = $this->getDoctrine()
+                   ->getEntityManager();
+
+        $blogs = $em->getRepository('DaniBlogBundle:Blog')
+                    ->getLatestBlogs();
+
         return $this->render(
         	'DaniBlogBundle:Page:index.html.twig'
         	, array(
         		'title' => $title
         		, 'text' => $text
+                , 'blogs' => $blogs
         	)
         );
     }
@@ -64,7 +72,7 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $blog = $em->getRepository('BloggerBlogBundle:Blog')->find($id);
+        $blog = $em->getRepository('DaniBlogBundle:Blog')->find($id);
 
         if (!$blog) {
             throw $this->createNotFoundException('Unable to find Blog post.');
