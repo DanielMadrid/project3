@@ -2,3 +2,15 @@ services:
 #    dani_blog.example:
 #        class: Blog\DaniBlogBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    dani_blog.registration.form.type:
+        class: Blog\DaniBlogBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias:DaniBlogBundle_registration }
+
+    dani_blog.form.handler.registration:
+        class: Blog\DaniBlogBundle\Form\Handler\RegistrationFormHandler
+        arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer", "@fos_user.util.token_generator"]
+        scope: request
+        public: false

@@ -85,4 +85,18 @@ class PageController extends Controller
             )
         );
     }
+
+     public function logginAction()
+    {
+        $title = "Loggin Page";
+        $text = "";
+
+        return $this->render(
+            'DaniBlogBundle:Page:loggin.html.twig'
+            , array(
+                'title' => $title
+                , 'text' => $text
+            )
+        );
+    }
 }

@@ -14,7 +14,14 @@ DaniBlogBundle_contact:
 
 DaniBlogBundle_blog_show:
     pattern:  /{id}
-    defaults: { _controller: BloggerBlogBundle:Blog:show }
+    defaults: { _controller: DaniBlogBundle:Blog:show }
     requirements:
         _method:  GET
         id: \d+
+
+
+DaniBlogBundle_loggin:
+    pattern:  /loggin
+    defaults: { _controller: DaniBlogBundle:Page:loggin }
+    requirements:
+        _method:  GET

@@ -70,3 +70,11 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
 
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Blog\DaniBlogBundle\Entity\User
+    registration:
+        form:
+            type: dani_blog_registration
+
